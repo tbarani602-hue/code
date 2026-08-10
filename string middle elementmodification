@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int n=s.length();
+    if(n%2==1){
+        s[n/2]='*';
+    }else{
+        s[n/2-1]='*';
+        s[n/2]='*';
+    }
+    cout<<s;
+    return 0;
+}
