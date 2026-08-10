@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+class calculator{
+    public:
+    int add(int a,int b){
+        return a+b;
+    }
+    int add(int a,int b,int c){
+        return a+b+c;
+    }
+    double add(double a,double b){
+        return a+b;
+    }
+};
+int main(){
+calculator s;
+cout<<s.add(10,20)<<endl;
+cout<<s.add(10,20,30)<<endl;
+cout<<s.add(10.5,20.6)<<endl;
+    return 0;
+}
