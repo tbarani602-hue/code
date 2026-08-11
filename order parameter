@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+class calculator{
+    public:
+    int multiply(int a,float b){
+        return a*b;
+    }
+    int multiply(float x,int y){
+        return x*y;
+    }
+};
+int main() 
+{
+  calculator obj;
+  int res=obj.multiply(10,2.5);
+  double x=obj.multiply(5.2,2);
+  cout<<res<<" "<<x;
+    return 0;
+}
