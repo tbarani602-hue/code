@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+class numbers{
+    int x;
+public:
+    numbers(int a){
+        x=a;
+    }
+    void operator-(){
+        x=-x;
+    }
+    void display(){
+        cout<<x;
+    }
+};
+int main() 
+{
+  numbers n(5);
+  -n;
+  n.display();
+    return 0;
+}
