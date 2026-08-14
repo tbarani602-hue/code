@@ -1,0 +1,14 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int a[]={50,20,10,40,50};
+    reverse(a,a+5);
+   for(int i:a){
+        cout<<i<<" ";
+    }
+    return 0;
+}       
+
+
+
