@@ -1,0 +1,9 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int a[]={50,20,10,40,50};
+        cout<<count(a,a+5,50);
+    
+return 0;
+}       
