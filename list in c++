@@ -1,0 +1,12 @@
+#include <iostream>
+#include<list>
+using namespace std;
+int main(){
+    list<double> l={10.5,20.5,30};
+    l.push_front(5.9);
+    l.push_back(40.9);
+   for(double x:l){
+        cout<<x<<" ";
+    }
+    return 0;
+}
