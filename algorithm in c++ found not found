@@ -1,0 +1,17 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int a[]={50,20,10,40,50};
+    reverse(a,a+5);
+    int*p=find(a,a+5,20);
+   if(p!= a+5)
+        cout<<"found";
+    else
+        cout<<"not found";
+    
+return 0;
+}       
+
+
+
