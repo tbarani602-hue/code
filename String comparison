@@ -4,5 +4,6 @@ public class  StringDemo{
         String s2="hello";
         System.out.println(s1==s2);
         System.out.println(s1.equals(s2));
+        System.out.println(s1.equalsIgnoreCase(s2));
     }
 }
