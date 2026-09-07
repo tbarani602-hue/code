@@ -1,0 +1,166 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class StudentMarkManager {
+private:
+    struct Student {
+        int id;
+        string name;
+        float marks;
+    };
+
+    Student students[100];
+    int count;
+
+public:
+    StudentMarkManager() {
+        count = 0;
+    }
+
+    // Add student
+    void addStudent(int id, string name, float marks) {
+        if (count == 100) {
+            cout << "Array is full!" << endl;
+            return;
+        }
+
+        students[count].id = id;
+        students[count].name = name;
+        students[count].marks = marks;
+        count++;
+
+        cout << "Student added successfully." << endl;
+    }
+
+    // Insert student at a position
+    void insertStudent(int position, int id, string name, float marks) {
+        if (count == 100) {
+            cout << "Array is full!" << endl;
+            return;
+        }
+
+        if (position < 0 || position > count) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+
+        for (int i = count; i > position; i--) {
+            students[i] = students[i - 1];
+        }
+
+        students[position].id = id;
+        students[position].name = name;
+        students[position].marks = marks;
+        count++;
+
+        cout << "Student inserted successfully." << endl;
+    }
+
+    // Read student by position
+    void readStudent(int position) {
+        if (position < 0 || position >= count) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+
+        cout << "ID: " << students[position].id << endl;
+        cout << "Name: " << students[position].name << endl;
+        cout << "Marks: " << students[position].marks << endl;
+    }
+
+    // Search student by ID
+    void searchStudent(int id) {
+        for (int i = 0; i < count; i++) {
+            if (students[i].id == id) {
+                cout << "Student Found!" << endl;
+                cout << "ID: " << students[i].id << endl;
+                cout << "Name: " << students[i].name << endl;
+                cout << "Marks: " << students[i].marks << endl;
+                return;
+            }
+        }
+
+        cout << "Student not found!" << endl;
+    }
+
+    // Display student with highest marks
+    void highestMarks() {
+        if (count == 0) {
+            cout << "No students available." << endl;
+            return;
+        }
+
+        int maxIndex = 0;
+
+        for (int i = 1; i < count; i++) {
+            if (students[i].marks > students[maxIndex].marks) {
+                maxIndex = i;
+            }
+        }
+
+        cout << "Student with Highest Marks:" << endl;
+        cout << "ID: " << students[maxIndex].id << endl;
+        cout << "Name: " << students[maxIndex].name << endl;
+        cout << "Marks: " << students[maxIndex].marks << endl;
+    }
+
+    // Calculate average marks
+    void averageMarks() {
+        if (count == 0) {
+            cout << "No students available." << endl;
+            return;
+        }
+
+        float sum = 0;
+
+        for (int i = 0; i < count; i++) {
+            sum += students[i].marks;
+        }
+
+        cout << "Average Marks: " << sum / count << endl;
+    }
+
+    // Display all students
+    void display() {
+        if (count == 0) {
+            cout << "No students available." << endl;
+            return;
+        }
+
+        for (int i = 0; i < count; i++) {
+            cout << "\nStudent " << i + 1 << endl;
+            cout << "ID: " << students[i].id << endl;
+            cout << "Name: " << students[i].name << endl;
+            cout << "Marks: " << students[i].marks << endl;
+        }
+    }
+};
+
+int main() {
+    StudentMarkManager manager;
+
+    manager.addStudent(101, "Arun", 85);
+    manager.addStudent(102, "Bala", 92);
+    manager.addStudent(103, "Kumar", 78);
+
+    cout << "\n--- All Students ---" << endl;
+    manager.display();
+
+    cout << "\n--- Insert Student ---" << endl;
+    manager.insertStudent(1, 104, "Ravi", 95);
+
+    cout << "\n--- Read Student at Position 1 ---" << endl;
+    manager.readStudent(1);
+
+    cout << "\n--- Search Student ID 102 ---" << endl;
+    manager.searchStudent(102);
+
+    cout << "\n--- Highest Marks ---" << endl;
+    manager.highestMarks();
+
+    cout << "\n--- Average Marks ---" << endl;
+    manager.averageMarks();
+
+    return 0;
+}
