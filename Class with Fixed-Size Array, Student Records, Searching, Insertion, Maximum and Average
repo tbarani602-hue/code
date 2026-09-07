@@ -17,8 +17,6 @@ public:
     StudentMarkManager() {
         count = 0;
     }
-
-    // Add student
     void addStudent(int id, string name, float marks) {
         if (count == 100) {
             cout << "Array is full!" << endl;
@@ -32,8 +30,6 @@ public:
 
         cout << "Student added successfully." << endl;
     }
-
-    // Insert student at a position
     void insertStudent(int position, int id, string name, float marks) {
         if (count == 100) {
             cout << "Array is full!" << endl;
@@ -56,8 +52,6 @@ public:
 
         cout << "Student inserted successfully." << endl;
     }
-
-    // Read student by position
     void readStudent(int position) {
         if (position < 0 || position >= count) {
             cout << "Invalid position!" << endl;
@@ -68,8 +62,6 @@ public:
         cout << "Name: " << students[position].name << endl;
         cout << "Marks: " << students[position].marks << endl;
     }
-
-    // Search student by ID
     void searchStudent(int id) {
         for (int i = 0; i < count; i++) {
             if (students[i].id == id) {
@@ -83,8 +75,6 @@ public:
 
         cout << "Student not found!" << endl;
     }
-
-    // Display student with highest marks
     void highestMarks() {
         if (count == 0) {
             cout << "No students available." << endl;
@@ -104,8 +94,6 @@ public:
         cout << "Name: " << students[maxIndex].name << endl;
         cout << "Marks: " << students[maxIndex].marks << endl;
     }
-
-    // Calculate average marks
     void averageMarks() {
         if (count == 0) {
             cout << "No students available." << endl;
@@ -120,8 +108,6 @@ public:
 
         cout << "Average Marks: " << sum / count << endl;
     }
-
-    // Display all students
     void display() {
         if (count == 0) {
             cout << "No students available." << endl;
