@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+class SinglelinkedList {
+    struct Node {
+        int data;
+        Node* next;
+Node(int value) : data(value), next(nullptr) {}
+    };
+    Node* head = nullptr;
+public:
+    void insertFront(int value) {
+        Node* node = new Node(value);
+        node->next = head;
+        head = node;
+    }
+    void insertEnd(int value) {
+        Node* node = new Node(value);
+        if (!head) {
+            head = node;
+            return;
+        }
+    Node* cur = head;
+      while (cur->next)
+            cur = cur->next;
+       cur->next = node;
+    }
+    bool search(int value) const {
+        for (Node* cur = head; cur; cur = cur->next) {
+            if (cur->data == value)
+                return true;
+        }
+
+        return false;
+    }
+    void deletevalue(int value) {
+        if (!head)
+            return;
+        if (head->data == value) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+        Node* cur = head;
+    while (cur->next && cur->next->data != value)
+            cur = cur->next;
+       if (cur->next) {
+            Node* temp = cur->next;
+            cur->next = temp->next;
+            delete temp;
+        }
+    }
+void display() const {
+        for (Node* cur = head; cur; cur = cur->next)
+            cout << cur->data << "->";
+        cout << "NULL\n";
+    }
+    ~SinglelinkedList() {
+        while (head) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
+};
+int main() {
+    SinglelinkedList list;
+    list.insertFront(20);
+    list.insertFront(10);
+    list.insertEnd(30);
+    list.insertEnd(40);
+    cout << "Original List: ";
+    list.display();
+    cout << "Search 30: "
+         << (list.search(30) ? "Found" : "Not Found")
+         << '\n';
+    list.deletevalue(20);
+    cout << "After deleting 20: ";
+    list.display();
+return 0;
+}
