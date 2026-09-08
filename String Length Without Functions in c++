@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int c=0;
+    string s;
+    getline(cin,s);
+    for(char ch:s){
+        c++;
+    }
+    cout<<c;
+   return 0;
+}
