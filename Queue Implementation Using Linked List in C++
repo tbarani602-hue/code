@@ -1,0 +1,56 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class Queue{
+    struct Node{
+        int data;
+        Node*next;
+        Node(int value):data(value),next(nullptr){}
+    };
+    Node*front=nullptr;
+    Node*rear=nullptr;
+public:
+    bool isEmpty()const{
+        return front==nullptr;
+    }
+    void enqueue(int value){
+        Node*node=new Node(value);
+        if(!rear){
+            front=rear=node;
+            return;
+        }
+        rear->next=node;
+        rear=node;
+    }
+    bool dequeue(int value){
+        if(isEmpty())return false;
+        Node*temp=front;
+        value=front->data;
+        front=front->next;
+        if(!front)rear=nullptr;
+        delete temp;
+        return true;
+    }
+    void display()const{
+        cout<<"FRONT->";
+        for(Node*cur=front;cur;cur=cur->next)
+            cout<<cur->data<<"->";
+        cout<<"REAR\n";
+    }
+    ~Queue(){
+        int value;
+        while(dequeue(value));
+    }
+};
+int main() {
+   Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    int value;
+    q.dequeue(value);
+    cout<<"Dequeued="<<value<<'\n';
+    q.display();
+    return 0;
+}
